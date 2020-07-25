@@ -8,6 +8,7 @@ RUN mkdir -p setup && cd setup && \
   echo "zend_extension = $PHP_EXT_DIR/ioncube_loader_lin_7.2.so" >> /opt/docker/etc/php/php.ini && \
   cd .. && rm -rf setup
   
+RUN docker-service enable cron
 RUN docker-cronjob '* * * * * application /app/cron.php`
 
 # from https://github.com/docker-library/php/issues/75 AND https://github.com/webdevops/Dockerfile/blob/master/docker/php-official/7.0/Dockerfile
